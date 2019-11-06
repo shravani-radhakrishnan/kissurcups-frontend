@@ -1,5 +1,7 @@
 {
   "name": "kissurcups",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
