@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { TosterService } from '../../../core/services/toster.service';
-import { PASSWORD, USERNAME } from '../../../core/constants/constant';
+import { TosterService } from '../../../../core/services/toster.service';
+import { PASSWORD, USERNAME } from '../../../../core/constants/constant';
 import { ActivatedRoute, Router } from '@angular/router';
+import { LoginService } from './service/login.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,7 +16,8 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private toastService: TosterService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private loginService:LoginService
   ) { }
 
   ngOnInit() {
@@ -24,8 +26,8 @@ export class LoginComponent implements OnInit {
 
   initForm() {
     this.loginForm = this.fb.group({
-      mobileNumber: ['', [Validators.required, Validators.maxLength(10), Validators.minLength(10)]],
-      password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(8)]]
+      mobile: ['', [Validators.required, Validators.maxLength(10), Validators.minLength(10)]],
+      password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(10)]]
     })
 
   }
@@ -41,7 +43,14 @@ export class LoginComponent implements OnInit {
 
   onSubmitLoginForm() {
     let loginObj = this.loginForm.value;
-    if (this.loginForm.value['mobileNumber'] === USERNAME && this.loginForm.value['password'] === PASSWORD) {
+    this.loginService.login(loginObj)
+    .then((data)=>{
+      console.log(data);
+    })
+    .catch((err)=>{
+
+    })
+    if (this.loginForm.value['mobile'] === USERNAME && this.loginForm.value['password'] === PASSWORD) {
       this.router.navigate(['/signup']);
     } else {
       this.toastService.presentToast('User account not found,Please Signup ', 2000);
