@@ -1,24 +1,33 @@
-<ion-card>
-  <ion-card-header>
-    <ion-card-title>Kiss Ur Cups</ion-card-title>
-    <ion-card-subtitle>Login</ion-card-subtitle>
-  </ion-card-header>
-  <ion-card-content>
-    <form [formGroup]="loginForm" (ngSubmit)="submitLogin()">
-      <ion-grid>
-        <ion-item>
-          <ion-label position="floating">Mobile Number</ion-label>
-          <ion-input formControlName="mobile" type="text" minlength="10"
-            maxlength="10"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="floating">Password</ion-label>
-          <ion-input type="password" formControlName="password" minlength="6"
+
+<ion-content class="loginPage ion-padding">
+  <ion-grid style="height: 100%">
+    <ion-row class="ion-align-items-center" style="height: 100%; flex-direction: column">
+      <form [formGroup]="loginForm" (ngSubmit)="submitLogin()">
+        <div class="userInput" style="width:300px;border:1px solid black;border-radius:15px;padding:10px">
+          <ion-input formControlName="mobile" placeholder="Username" inputmode="numeric" type="text" minlength="10"
             maxlength="10">
+            <ion-icon name="person"></ion-icon>
           </ion-input>
-        </ion-item>
-        <ion-button type="submit" class="">Login</ion-button>
-      </ion-grid>
-    </form>
-  </ion-card-content>
-</ion-card>
+          <ion-input type="password" formControlName="password" placeholder="Password" minlength="6" maxlength="10">
+            <ion-icon name="lock"></ion-icon>
+          </ion-input>
+        </div>
+        <ion-grid class="checkBox">
+          <ion-row>
+            <ion-checkbox color="primary"></ion-checkbox>
+            <ion-label>Accept Terms & Conditions</ion-label>
+          </ion-row>
+          <ion-row>
+            <ion-button expand="block" type="submit">Login</ion-button>
+          </ion-row>
+          <ion-row>
+            <a routerLink="/account/signup">Forgot Password ? </a>
+          </ion-row>
+          <ion-row>
+            Don't have Account ? <a><span routerLink="/">Register Now ? </span></a>
+          </ion-row>
+        </ion-grid>
+      </form>
+    </ion-row>
+  </ion-grid>
+</ion-content>

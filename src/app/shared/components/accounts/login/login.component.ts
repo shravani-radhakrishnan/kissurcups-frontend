@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TosterService } from '../../../../core/services/toster.service';
-import { PASSWORD, USERNAME } from '../../../../core/constants/constant';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoginService } from './service/login.service';
 @Component({
@@ -12,6 +11,7 @@ import { LoginService } from './service/login.service';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   submitted = false;
+  restaurantInfo;
   constructor(
     private fb: FormBuilder,
     private toastService: TosterService,
@@ -43,17 +43,16 @@ export class LoginComponent implements OnInit {
 
   onSubmitLoginForm() {
     let loginObj = this.loginForm.value;
+    loginObj.userType = 'admin';
     this.loginService.login(loginObj)
     .then((data)=>{
       console.log(data);
+      if(data['body']['type'] === 'success'){
+        this.restaurantInfo = data['body']['data'];
+      }
     })
     .catch((err)=>{
-
+      console.log(err);
     })
-    if (this.loginForm.value['mobile'] === USERNAME && this.loginForm.value['password'] === PASSWORD) {
-      this.router.navigate(['/signup']);
-    } else {
-      this.toastService.presentToast('User account not found,Please Signup ', 2000);
-    }
   }
 }

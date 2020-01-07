@@ -9,9 +9,9 @@ const routes: Routes = [
     component: AccountsComponent,
     children: [
       {
-        path:'',
-        redirectTo:'login',
-        pathMatch:'full',
+        path: '',
+        redirectTo: 'login',
+        pathMatch: 'full',
       },
       {
         path: 'login',
@@ -20,7 +20,7 @@ const routes: Routes = [
       {
         path: 'signup',
         loadChildren: () => import('./signup/signup.module').then(m => m.SignupModule),
-      }
+      },
     ]
   }
 ];
