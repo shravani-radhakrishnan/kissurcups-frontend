@@ -10,7 +10,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'login',
+        redirectTo: 'useraccount',
         pathMatch: 'full',
       },
       {
@@ -21,6 +21,10 @@ const routes: Routes = [
         path: 'signup',
         loadChildren: () => import('./signup/signup.module').then(m => m.SignupModule),
       },
+      {
+        path: 'useraccount',
+        loadChildren: () => import('./user-account/user-account.module').then(m => m.UserAccountModule),
+      }
     ]
   }
 ];

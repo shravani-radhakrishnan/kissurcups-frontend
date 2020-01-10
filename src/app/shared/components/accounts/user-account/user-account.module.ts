@@ -1,24 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { UserAccountComponent } from './user-account.component';
 import { Routes, RouterModule } from '@angular/router';
-import { OutletComponent } from './outlet.component';
 import { IonicModule } from '@ionic/angular';
-import { NgxQRCodeModule } from 'ngx-qrcode2';
-
 const routes: Routes = [
   {
     path: '',
-    component: OutletComponent
+    component: UserAccountComponent
   }
 ];
 
+
 @NgModule({
-  declarations: [OutletComponent],
+  declarations: [UserAccountComponent],
   imports: [
     CommonModule,
-    NgxQRCodeModule,
     RouterModule.forChild(routes),
     IonicModule
   ]
 })
-export class OutletModule { }
+export class UserAccountModule { }

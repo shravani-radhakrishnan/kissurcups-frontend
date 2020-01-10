@@ -1,3 +1,44 @@
-<p>
-  outlet works!
-</p>
+<ion-header>
+  <ion-grid>
+    <ion-row *ngIf="outletsData != null" class="ion-align-items-center" style="height: 100%; flex-direction: column">
+      <ion-select [interfaceOptions]="customAlertOptions" placeholder="Select outlet" interface="action-sheet"
+        okText="Okay" cancelText="Dismiss" (ionChange)="selectedOutlet($event)">
+        <ion-select-option *ngFor="let outlet of outletsData" [value]="outlet.displayName">{{outlet.displayName}}
+        </ion-select-option>
+      </ion-select>
+    </ion-row>
+  </ion-grid>
+</ion-header>
+<ion-content *ngIf="outletInfo !=null">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Outlet Details</ion-card-title>
+      <ion-card-subtitle>{{outletInfo.outletName}}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <div>
+        <p><span class="bold">No of Tables : </span>{{outletInfo.noOfTables}}</p>
+        <p><span class="bold">Address :</span>{{address}}</p>
+        <ion-button type="button" (click)="downloadQR()">Download All</ion-button>
+        <ion-list>
+          <ion-item *ngFor="let table of outletInfo.tables;let i=index;">
+            <ion-checkbox ></ion-checkbox> &nbsp;&nbsp;
+            <ion-label> {{table.tableNo}} </ion-label>
+            <ngx-qrcode qrc-class="qr{{i}}" id="QR_Canvas" [qrc-element-type]="elementType" style="display: none;"
+              [qrc-value]="table.QrLink">
+            </ngx-qrcode>
+          </ion-item>
+        </ion-list>
+        <!-- <ul style="list-style-type: none;">
+          <li *ngFor="let table of outletInfo.tables;let i=index;">
+
+            <span class="bold">{{table.tableNo}}</span>
+            <ngx-qrcode qrc-class="qr{{i}}" id="QR_Canvas" [qrc-element-type]="elementType" style="display: none;"
+              [qrc-value]="table.QrLink">
+            </ngx-qrcode>
+          </li>
+        </ul> -->
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

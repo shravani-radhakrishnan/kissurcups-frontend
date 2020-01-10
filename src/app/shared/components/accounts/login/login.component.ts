@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TosterService } from '../../../../core/services/toster.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoginService } from './service/login.service';
+import { StorageService } from 'src/app/core/services/storage.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -17,7 +18,8 @@ export class LoginComponent implements OnInit {
     private toastService: TosterService,
     private route: ActivatedRoute,
     private router: Router,
-    private loginService:LoginService
+    private loginService: LoginService,
+    private storageService: StorageService
   ) { }
 
   ngOnInit() {
@@ -43,16 +45,27 @@ export class LoginComponent implements OnInit {
 
   onSubmitLoginForm() {
     let loginObj = this.loginForm.value;
-    loginObj.userType = 'admin';
+    let userType = this.storageService.getItem('userType');
+    if (userType != null) {
+      loginObj.userType = userType;
+    }
+
     this.loginService.login(loginObj)
-    .then((data)=>{
-      console.log(data);
-      if(data['body']['type'] === 'success'){
-        this.restaurantInfo = data['body']['data'];
-      }
-    })
-    .catch((err)=>{
-      console.log(err);
-    })
+      .then((data) => {
+        console.log(data);
+        if (data['body']['type'] === 'success') {
+          this.restaurantInfo = data['body']['data'];
+          this.storageService.setItem('mobile',data['body']['data']['mobile'])
+          if (userType === 'appUser') {
+            // this.router.navigate(['account/selectOutlet']);
+          }
+          if (userType === 'admin') {
+            this.router.navigate(['outlets/outlet']);
+          }
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      })
   }
 }
