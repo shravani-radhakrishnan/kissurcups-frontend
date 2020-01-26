@@ -16,6 +16,10 @@ const routes: Routes = [
       {
         path: 'outlet',
         loadChildren: () => import('./outlet/outlet.module').then(m => m.OutletModule),
+      },
+      {
+        path: 'qrscanner',
+        loadChildren: () => import('./qrscanner/qrscanner.module').then(m => m.QrscannerModule)
       }
     ]
   }

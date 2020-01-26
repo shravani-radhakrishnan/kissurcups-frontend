@@ -19,7 +19,7 @@ import {ReactiveFormsModule} from '@angular/forms';
       AppRoutingModule,
       ReactiveFormsModule,
       HttpClientModule,
-      NgxQRCodeModule
+      NgxQRCodeModule,
     ],
   providers: [
     StatusBar,

@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
           this.restaurantInfo = data['body']['data'];
           this.storageService.setItem('mobile',data['body']['data']['mobile'])
           if (userType === 'appUser') {
-            // this.router.navigate(['account/selectOutlet']);
+            this.router.navigate(['outlets/qrscanner']);
           }
           if (userType === 'admin') {
             this.router.navigate(['outlets/outlet']);

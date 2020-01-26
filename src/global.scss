@@ -7,7 +7,7 @@
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
-@import '~@ionic/angular/css/display.css';
+@import "~@ionic/angular/css/display.css";
 
 /* Optional CSS utils that can be commented out */
 @import "~@ionic/angular/css/padding.css";
@@ -15,17 +15,25 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
-@import url('https://fonts.googleapis.com/css?family=Great+Vibes%7CLobster&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Great+Vibes%7CLobster&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Aclonica|Caveat+Brush|Fredericka+the+Great|Michroma|Modak|Philosopher&display=swap");
 * {
-    box-sizing: border-box;
-    font-family: 'ProductSans', 'arial', sans-serif;
-  }
-  @font-face {
-    font-family: ProductSans;
-    src: url('../src/assets/fonts/ProductSans-Bold.ttf');
-    font-style:normal;
-    font-weight: 200;
-  }
-  .bold{
-    font-weight: bold;
-  }
+  box-sizing: border-box;
+  font-family: "ProductSans", "arial", sans-serif;
+}
+@font-face {
+  font-family: ProductSans;
+  src: url("../src/assets/fonts/ProductSans-Bold.ttf");
+  font-style: normal;
+  font-weight: 200;
+}
+.bold {
+  font-weight: bold;
+}
+
+//   font-family: 'Aclonica', sans-serif;
+// font-family: 'Caveat Brush', cursive;
+// font-family: 'Fredericka the Great', cursive;
+// font-family: 'Michroma', sans-serif;
+// font-family: 'Modak', cursive;
+// font-family: 'Philosopher', sans-serif;

@@ -1,0 +1,20 @@
+<ion-header>
+  <p>QRCode Scanner</p>
+</ion-header>
+<ion-content>
+  <div class="qrscanner">
+    <ion-grid>
+      <ion-row class="ion-align-items-center">
+        <ion-col cltext-centre>
+          <zxing-scanner [torch]="torchEnabled" (scanSuccess)="onCodeResult($event)"
+            (permissionResponse)="onHasPermission($event)" (camerasFound)="onCamerasFound($event)"></zxing-scanner>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-align-items-center">
+        <ion-col class="text-centre">
+          <ng-otp-input class="div_center" (onInputChange)="onQRCodeSubmit($event)" [config]=getConfig()></ng-otp-input>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
