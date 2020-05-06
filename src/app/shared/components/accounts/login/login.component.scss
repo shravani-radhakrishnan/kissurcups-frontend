@@ -1,6 +1,6 @@
 .loginPage {
   position: absolute;
-  padding-top:4rem ;
+  padding-top: 7rem;
   filter: blur(0px);
   background: rgb(0, 0, 0); /* Fallback color */
   background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
@@ -46,10 +46,16 @@
       --transition: all 1s ease-in-out;
     }
     .forgot {
+      cursor: pointer;
       a {
         text-decoration: none;
         color: var(--white);
         width: 100%;
+      }
+    }
+    .register {
+      span {
+        cursor: pointer;
       }
     }
   }
@@ -64,4 +70,5 @@ ion-content.background {
   // filter: blur(2px);
   position: relative;
   margin: 0 auto;
+  overflow: none;
 }

@@ -1,14 +1,16 @@
-<ion-content class="userAccount background">
-  <ion-grid class="userType">
-    <ion-row size="12">
-      <ion-col>
-        <ion-button type="button" expand="full" (click)="getUserType('admin')">Owner</ion-button>
-      </ion-col>
-    </ion-row>
-    <ion-row size="12">
-      <ion-col>
-        <ion-button type="button" expand="block" (click)="getUserType('appUser')">User</ion-button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+<ion-content class="userAccount background ">
+  <div class="overlay">
+    <ion-grid class="userType">
+      <ion-row size="12">
+        <ion-col>
+          <ion-button type="button" class="creativeBtns" expand="full" (click)="getUserType('admin')">Owner</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row size="12">
+        <ion-col>
+          <ion-button type="button" class="creativeBtns" expand="full" (click)="getUserType('appUser')">User</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 </ion-content>
