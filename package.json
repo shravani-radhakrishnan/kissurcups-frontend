@@ -31,7 +31,7 @@
     "cordova-android": "8.1.0",
     "core-js": "^2.5.4",
     "ionic": "^5.4.13",
-    "jspdf": "^1.5.3",
+    "jspdf": "^2.3.1",
     "ng-otp-input": "^1.7.0",
     "ngx-qrcode2": "0.0.9",
     "rxjs": "~6.5.1",
